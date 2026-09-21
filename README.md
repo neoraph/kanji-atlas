@@ -2,7 +2,7 @@
 
 Kanji Atlas is a static web application for learning the kanji used in Japanese prefecture names.
 
-**Live demo:** <https://neoraph.github.io/kanji-prefecture/>
+**Live demo:** <https://neoraph.github.io/kanji-atlas/>
 
 It includes:
 
