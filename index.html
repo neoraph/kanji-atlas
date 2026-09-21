@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kanji Atlas — Japanese Prefectures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">漢</span><div><strong>Kanji Atlas</strong><small>47 prefectures</small></div></div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-view="dashboard"><span>⌂</span> Overview</button>
+          <button class="nav-item" data-view="study"><span>◫</span> Learn kanji</button>
+          <button class="nav-item" data-view="quiz"><span>✦</span> Kanji quiz</button>
+          <button class="nav-item" data-view="map"><span>⌘</span> Map challenge</button>
+        </nav>
+        <div class="sidebar-foot"><div class="streak"><span>☀</span><div><b id="streak-value">0 day streak</b><small>Keep your rhythm going</small></div></div><p>Progress is saved on this device.</p></div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar"><div><p class="eyebrow">Good evening, <span id="greeting-name">Learner</span></p><h1 id="page-title">Your kanji journey</h1></div><div class="user-control"><label for="user-select">LEARNER</label><select id="user-select"></select><button id="add-user" class="icon-button" aria-label="Add learner">+</button></div></header>
+
+        <section id="dashboard-view" class="view active">
+          <div class="hero-card"><div><p class="eyebrow light">A little every day</p><h2>Discover the names<br />of Japan.</h2><p>Learn the kanji hiding in all 47 prefectures, one meaningful name at a time.</p><button class="primary-button" data-view="study">Start learning <span>→</span></button></div><div class="hero-kanji" aria-hidden="true">日<br /><span>本</span></div></div>
+          <div class="section-heading"><div><p class="eyebrow">Your progress</p><h2>Build your knowledge</h2></div><button class="text-button" data-view="quiz">Practice now →</button></div>
+          <div class="stats-grid"><article class="stat-card"><span class="stat-icon ink">漢</span><div><strong id="stat-kanji">0</strong><small>kanji mastered</small></div><div class="progress-line"><i id="kanji-progress"></i></div></article><article class="stat-card"><span class="stat-icon coral">✦</span><div><strong id="stat-accuracy">—</strong><small>quiz accuracy</small></div><div class="progress-line coral-line"><i id="accuracy-progress"></i></div></article><article class="stat-card"><span class="stat-icon gold">◷</span><div><strong id="stat-reviewed">0</strong><small>reviews completed</small></div><div class="progress-line gold-line"><i id="review-progress"></i></div></article></div>
+          <div class="lower-grid"><section class="panel"><div class="panel-heading"><div><p class="eyebrow">Explore</p><h3>Prefecture regions</h3></div><span class="count-label">47 total</span></div><div id="region-list" class="region-list"></div></section><section class="panel weak-panel"><div class="panel-heading"><div><p class="eyebrow">Focus next</p><h3>Needs a little love</h3></div><button class="text-button" data-view="quiz">Quiz →</button></div><div id="weak-list"></div></section></div>
+        </section>
+
+        <section id="study-view" class="view">
+          <div class="section-heading"><div><p class="eyebrow">Learn kanji</p><h2>Meet the prefectures</h2><p class="section-subtitle">Flip through each name, its reading, and the region it belongs to.</p></div><div class="filter-wrap"><label for="region-filter">REGION</label><select id="region-filter"><option value="all">All regions</option></select></div></div>
+          <div id="study-card" class="study-card"></div><div class="study-controls"><button class="secondary-button" id="prev-card">← Previous</button><span id="card-position"></span><button class="primary-button" id="next-card">Next →</button></div>
+          <div id="prefecture-index" class="prefecture-index"></div>
+        </section>
+
+        <section id="quiz-view" class="view">
+          <div class="section-heading"><div><p class="eyebrow">Kanji quiz</p><h2>Complete the prefecture</h2><p class="section-subtitle">Choose the missing character. Similar readings make this one tricky.</p></div><div class="quiz-score"><strong id="quiz-score">0</strong><small>correct today</small></div></div>
+          <div class="quiz-card"><div class="quiz-meta"><span id="quiz-region">REGION</span><span id="quiz-number">01 / 10</span></div><div class="quiz-prompt"><p>Which kanji completes this name?</p><div id="quiz-name" class="quiz-name"></div><div id="quiz-reading" class="quiz-reading"></div></div><div id="quiz-options" class="quiz-options"></div><div id="quiz-feedback" class="quiz-feedback" role="status"></div><button id="next-question" class="primary-button next-question" hidden>Next question <span>→</span></button></div>
+        </section>
+
+        <section id="map-view" class="view">
+          <div class="section-heading"><div><p class="eyebrow">Map challenge</p><h2>Place the prefectures</h2><p class="section-subtitle">Drag a name onto its region. Start with the labels below.</p></div><div class="quiz-score"><strong id="map-score">0</strong><small>placed correctly</small><strong id="map-completion">0%</strong><small>map completed</small><strong id="map-accuracy">0%</strong><small>accuracy</small></div></div>
+          <div class="map-layout"><div class="map-board"><div class="map-title">JAPAN <span>drag &amp; drop</span></div><div class="map-stage"><div id="map-grid" class="map-grid" aria-label="Map of Japan"></div></div></div><div class="label-tray"><div class="panel-heading"><div><p class="eyebrow">Name bank</p><h3>Prefectures</h3></div><span id="labels-left" class="count-label"></span></div><div id="drag-labels" class="drag-labels"></div><button id="reset-map" class="text-button">Reset challenge ↻</button></div></div>
+        </section>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
